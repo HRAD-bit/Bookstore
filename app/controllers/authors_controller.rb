@@ -10,6 +10,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1
   def show
+    @author = Author.find(params[:id])
     render json: @author
   end
 
@@ -26,6 +27,7 @@ class AuthorsController < ApplicationController
 
   # PATCH/PUT /authors/1
   def update
+    @author = Author.find(params[:id])
     if @author.update(author_params)
       render json: @author
     else
@@ -35,6 +37,7 @@ class AuthorsController < ApplicationController
 
   # DELETE /authors/1
   def destroy
+    @author = Author.find(params[:id])
     @author.destroy!
   end
 

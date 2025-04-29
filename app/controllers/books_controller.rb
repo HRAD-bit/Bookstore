@@ -10,6 +10,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
+    @book = Book.find(params[:id])
     render json: @book
   end
 
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
 
   # PATCH/PUT /books/1
   def update
+    @book = Book.find(params[:id])
     if @book.update(book_params)
       render json: @book
     else
@@ -35,7 +37,9 @@ class BooksController < ApplicationController
 
   # DELETE /books/1
   def destroy
+    @book = Book.find(params[:id])
     @book.destroy!
+    head :no_content
   end
 
   private
@@ -46,6 +50,7 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.expect(book: [ :title, :author, :published_year ])
+      params.require(:book).permit(:title, :author_id, :published_year)
+      # params.expect(book: [ :title, :author_id, :published_year ])
     end
 end
