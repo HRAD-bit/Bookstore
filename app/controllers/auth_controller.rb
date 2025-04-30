@@ -25,7 +25,7 @@ class AuthController < ApplicationController
         params.permit(:email, :password)
     end
 
-    def enconde_token(payload)
-        JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    def encode_token(payload)
+        JWT.encode(payload, Rails.application.credentials.jwt_secret)
     end
 end

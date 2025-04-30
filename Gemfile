@@ -49,7 +49,7 @@ group :development, :test do
   gem 'rack-cors'
 
   # Added JWT gem for authentication
-  gem 'bcrypt'
+  gem 'bcrypt', '~> 3.1.7'
   gem 'jwt'
 
 end
